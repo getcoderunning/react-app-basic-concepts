@@ -1,0 +1,1119 @@
+//SECTION React Exercises
+
+//===========================================================
+//ANCHOR -  FROM index.js FILE
+//===========================================================
+import React from 'react';
+import reactDOM from 'react-dom';
+//import './styles/style.css';
+import './styles/style.scss';
+import App from '../App';
+
+//NOTE Using CreateElement method to pass JSX in a variable
+    //const template = React.createElement('h1',{className:'title'},'Hello World');
+
+//NOTE Using direct JSX passing into a variable
+    //const template = <h1>Hello World 123</h1>
+
+//NOTE Using App as container to return JSX value
+    //const App = () => {
+    //    return <h1>My List</h1> 
+    //}
+
+//NOTE JSX Render method
+    //Directly rendering JSX in the render method
+    /*reactDOM.render(
+            <ul>
+                <li>List 1</li>
+                <li>List 2</li>
+                <li>List 3</li>
+            </ul>, 
+        document.getElementById('root')
+    );
+    */
+
+//NOTE Using Functional Components
+    //Naming a function is like naming a constructor
+    //Return the JSX component you want render
+/*     function MyApp(){
+        return (
+            <ul>
+                <li>List 1</li>
+                <li>List 2</li>
+                <li>List 3</li>
+            </ul>
+        )
+
+    } */
+
+//NOTE Practice
+// Objectives:
+// 1. Set up the basic React code from scratch
+// 2. Create a functional component called MyInfo that returns the following UI:
+    // a. An h1 with your name
+    // b. A paragraph with a little blurb about yourself
+    // c. An ordered or unordered list of the top 3 vacation spots you'd like to visit
+// 3. Render an instance of that functional component to the browser
+// Extra challenge: learn on your own (Google!) how you can add some style to your page.
+// (We will also cover this in an upcoming lesson).
+/*     function MyInfo(){
+        return (
+            <div>
+                <h1>Christian Bailon</h1>
+                <p>The most pogi in the world. I want to go to these places;</p>
+                <ul>
+                    <li>Japan</li>
+                    <li>Germany</li>
+                    <li>Russia</li>
+                </ul>
+            </div>
+        )
+    }
+ */
+
+ //NOTE Separate the function components in index.js to a separate file
+
+reactDOM.render(<App />, document.getElementById("root"))
+//-----------------------------------------------------------
+
+
+//===========================================================
+//ANCHOR FROM App.js FILE
+//===========================================================
+// import React from 'react';
+// import Footer from './src/components/Footer';
+// import Header from './src/components/Header';
+// import MainContent from './src/components/MainContent';
+// import NavBar from './src/components/NavBar';
+// import TodoItem from './src/components/TodoItem';
+// import ContactCard from './src/components/ContactCard';
+// import Joke from "./src/components/Joke";
+// import jokesData from "./src/data/jokesData";
+
+// function App(){
+//-----------------------------------------------------------
+        //NOTE rendering partial components 
+        /*     return(
+                <div>   
+                    <Header />
+                    <MainContent />
+                    <input type="checkbox"></input>
+                    <p>Placehoder text here</p>
+
+                    <input type="checkbox"></input>
+                    <p>Placehoder text here</p>
+
+                    <input type="checkbox"></input>
+                    <p>Placehoder text here</p>
+
+                    <input type="checkbox"></input>
+                    <p>Placehoder text here</p>
+                    <Footer />
+                </div>
+            ) */
+//-----------------------------------------------------------
+        //NOTE Returning clock or time data
+        /*     const date = new Date();
+            const hours = date.getHours();
+            let timeOfDay;
+
+            if (hours<12){
+                timeOfDay="Morning";
+            }else if(hours>=12 && hours<17){
+                timeOfDay="Afternoon";
+            }else {
+                timeOfDay="Night";
+            }
+
+            return (
+            <h1>Good {timeOfDay}!!</h1>
+            ) */
+//-----------------------------------------------------------
+        //NOTE Creating and styling a todo list
+        /*     return(
+                <div className="todo-list">
+                <TodoItem />
+                <TodoItem />
+                <TodoItem />
+                <TodoItem />
+            </div>
+            ) */
+//-----------------------------------------------------------
+        //NOTE Creating a Contact Card app
+        /*     return (
+                <div className="contacts">
+                    <ContactCard  contact={{
+                        name:"Mr. Whisky",
+                        imgUrl:"http://placekitten.com/300/200",
+                        phone:"09174687729",
+                        email:"christian@bailon.com" }} /> 
+                    <ContactCard  contact={{
+                        name:"Mr. Vodka",
+                        imgUrl:"http://placekitten.com/400/200",
+                        phone:"09174687729",
+                        email:"ian@bail.com"  }}/>
+                    <ContactCard  contact={{
+                        name:"Ms. Tequila",
+                        imgUrl:"http://placekitten.com/400/300",
+                        phone:"09174687729",
+                        email:"chris@blon.com"  }}/>
+                    <ContactCard  contact={{
+                        name:"Mr. Gin",
+                        imgUrl:"http://placekitten.com/200/10",
+                        phone:"09174687729",
+                        email:"christi@bai.com"  }}/>
+                </div>
+            ) */
+
+
+//-----------------------------------------------------------
+    //NOTE Creating a Meme App or Joke App
+/*     return(
+        <div>
+            <Joke punchLine="I don't know, but the flag is a big plus!" />
+            <Joke question="What's the best thing about Switzerland?" 
+                punchLine="I don't know, but the flag is a big plus!" />
+            <Joke question="Did you hear about the mathematician who's afraid of negative numbers?" 
+                punchLine="He'll stop at nothing to avoid them!"/>
+            <Joke question="Hear about the new restaurant called Karma?" 
+                punchLine="There’s no menu: You get what you deserve."/>
+            <Joke  question="Did you hear about the actor who fell through the floorboards?" 
+                punchLine="He was just going through a stage."/>
+            <Joke question="Did you hear about the claustrophobic astronaut?" 
+                punchLine="He just needed a little space."/>
+        </div>
+
+    ) */
+//-----------------------------------------------------------
+    //NOTE Function App Method for Jokes
+    function App() {
+        const jokeComponents = jokesData.map(joke => <Joke key={joke.id} question={joke.question} punchLine={joke.punchLine} />)
+        
+        return (
+            <div>
+                {jokeComponents}            
+            </div>
+        )
+}
+
+export default App
+
+//-----------------------------------------------------------
+    //NOTE Function App  Method for Products
+    function App() {
+        const productComponents = schoolProductsData.map(item => <Product key={item.id} product={item} />)
+
+        return (
+            <div>
+                {productComponents}
+            </div>
+        )
+    }
+
+    export default App
+    
+//-----------------------------------------------------------
+    //NOTE Function App  Method for Todo List App
+    import React from "react";
+    import TodoItem from "./src/components/TodoItem";
+    import todosData from "./src/data/todosData";
+    import "./src/styles/style.scss";
+
+
+    function App() {
+
+        const todoItems = todosData.map(item => <TodoItem key={item.id} item={item}/>)
+        return (
+            <div className="todo-list">
+                {todoItems}
+            </div>
+        )
+    }
+
+    export default App
+//-----------------------------------------------------------
+    //NOTE Implementing Class from a Function
+    import React from "react";
+    // #1
+    // function App() {
+    //     return (
+    //         <div>
+    //             <Header />
+    //             <Greeting />
+    //         </div>
+    //     )
+    // }
+
+    class App extends React.Component {
+        render() {
+            return(
+                <div>
+                    <Header username="vschool"/>
+                    <Greeting />
+                </div>
+            )
+            
+        }
+    }
+
+    // #2
+    // function Header(props) {
+    //     return (
+    //         <header>
+    //             <p>Welcome, {props.username}!</p>
+    //         </header>
+    //     )
+    // }
+
+    class Header extends React.Component {
+        render () {
+            return (
+                <header>
+                    <p>Welcome, {this.props.username}!</p>
+                </header>
+            )
+
+        }
+    }
+
+    // #3
+    // function Greeting() {
+    //     const date = new Date()
+    //     const hours = date.getHours()
+    //     let timeOfDay
+        
+    //     if (hours < 12) {
+    //         timeOfDay = "morning"
+    //     } else if (hours >= 12 && hours < 17) {
+    //         timeOfDay = "afternoon"
+    //     } else {
+    //         timeOfDay = "night"
+    //     }
+    //     return (
+    //         <h1>Good {timeOfDay} to you, sir or madam!</h1>
+    //     )
+    // }
+
+    class Greeting extends React.Component {
+
+        
+        render(){
+            const date = new Date()
+            const hours = date.getHours()
+            let timeOfDay
+            
+            if (hours < 12) {
+                timeOfDay = "morning"
+            } else if (hours >= 12 && hours < 17) {
+                timeOfDay = "afternoon"
+            } else {
+                timeOfDay = "night"
+            }
+            return (
+                <h1>Good {timeOfDay} to you, sir or madam!</h1>
+            )
+        }
+    }
+        export default App
+//-----------------------------------------------------------
+    //NOTE Implementing constructor and state
+    import React from "react";
+
+    class App extends React.Component {
+        constructor(){
+            super()
+            this.state = {
+                answer: "Yes"
+            }
+        }
+
+        render(){
+            return (
+                <div>
+                    <h1>Is state important? {this.state.answer}</h1>                
+                </div>
+            )
+        }
+    }
+
+
+export default App
+//-----------------------------------------------------------
+    //NOTE Implementing constructor and state practice 1
+import React from "react";
+
+class App extends React.Component {
+    constructor(){
+        super()
+        this.state = {
+            name: "xtian",
+            age: 69
+        }
+    }
+    
+    render() {
+        return (
+            <div>
+                <h1>{this.state.name}</h1>
+                <h3>{this.state.age} years old</h3>
+            </div>
+        )    
+    }
+}
+
+
+export default App
+//-----------------------------------------------------------
+    //NOTE Implementing constructor and state practice 2
+import React from "react";
+
+
+class App extends React.Component{
+    constructor (){
+        super()
+        this.state = {
+            isLoggedIn: false
+        }
+    }
+
+    render(){
+        let wordDisplay
+        if (this.state.isLoggedIn){
+            wordDisplay = "in"
+        } else {
+            wordDisplay="out"
+        }
+
+        return (
+            <div>
+                <h1>You are currently logged {wordDisplay}!</h1>
+            </div>
+        )
+
+    }
+
+}
+
+
+export default App
+//-----------------------------------------------------------
+    //NOTE Implementing constructor and state in the ToDo List
+import React from "react";
+import TodoItem from "./src/components/TodoItem"
+import todosData from "./src/data/todosData"
+import "./src/styles/style.scss"
+
+
+class App extends React.Component {
+    constructor (){
+        super()
+        this.state = {
+            todos: todosData
+        }
+    } 
+
+    render (){
+        const todoItems = this.state.todos.map(item => <TodoItem key={item.id} item={item}/>)
+
+        return (
+            <div className="todo-list">
+                {todoItems}
+            </div>
+        )
+    }
+}
+
+export default App
+//-----------------------------------------------------------
+    //NOTE Implementing events in react
+import React from "react";
+import TodoItem from "./src/components/TodoItem"
+import todosData from "./src/data/todosData"
+import "./src/styles/style.scss"
+
+function handleClick(){
+    console.log("I was clicked!")
+}
+
+function handleMouseOver(){
+    console.log("I was hovered!")
+}
+
+function App(){
+    return (
+        <div>
+            <img onMouseOver={handleMouseOver} src="https://www.fillmurray.com/200/100"/>
+            <br />
+            <br />
+            <button onClick={handleClick}>Click Me</button>
+        </div>
+    )
+}
+
+export default App
+//-----------------------------------------------------------
+    //NOTE Implementing events and state in react
+import React from "react";
+import TodoItem from "./src/components/TodoItem"
+import todosData from "./src/data/todosData"
+import "./src/styles/style.scss"
+
+class App extends React.Component {
+    
+    constructor (){
+        super()
+        this.state = {
+            count: 0
+        }
+        this.handleClick = this.handleClick.bind(this)
+    }
+
+    // handleClick() {
+    //     this.setState(prevState => {
+    //         return (
+    //             count: prevState.count + 1
+    //         )
+    //     })
+    // }
+
+    handleClick() {
+        this.setState(prevState => {
+            return {
+                count: prevState.count + 1
+            }
+        })
+    }
+
+    render(){
+        return(
+            <div>
+                <h1>{this.state.count}</h1>
+                <button onClick={this.handleClick}>Change</button>
+            </div>
+        )
+    }
+}
+
+export default App
+//-----------------------------------------------------------
+    //NOTE Implementing events, state and constructors in todolist
+import React from "react";
+import TodoItem from "./src/components/TodoItem"
+import todosData from "./src/data/todosData"
+import "./src/styles/style.scss"
+
+class App extends React.Component {
+    constructor (){
+        super()
+        this.state = {
+            todos: todosData
+        }
+        this.handleChange = this.handleChange.bind(this)
+    } 
+
+    handleChange(id){
+        // Update state so that the item with the given id flips `completed` 
+        // from false to true (or vise versa)
+        // Remember not to modify prevState directly, but instead to return a 
+        // new version of state with the change you want included in that update. 
+        // (Think how you might use the `.map` method to do this)
+        this.setState(prevState => {
+           const updatedTodos = prevState.todos.map(todo => {
+               if(todo.id === id){               
+                    return {
+                        ...todo,
+                        completed: !todo.completed
+                    }
+               }
+               return todo
+           })
+           console.log(prevState.todos)
+           console.log(updatedTodos)
+           return {
+               todos: updatedTodos
+           }
+        })
+    }
+
+    render (){
+        const todoItems = this.state.todos.map(item => <TodoItem key={item.id} 
+            item={item} handleChange={this.handleChange}/>)
+
+        return (
+            <div className="todo-list">
+                {todoItems}
+            </div>
+        )
+    }
+}
+
+export default App
+//-----------------------------------------------------------
+    //NOTE Implementing Lifecycle methods in react
+import React from "react";
+import TodoItem from "./src/components/TodoItem"
+import todosData from "./src/data/todosData"
+import "./src/styles/style.scss"
+import randomcolor from "randomcolor"
+
+class App extends React.Component {
+
+    constructor() {
+        super()
+        this.state = {
+            count: 0,
+            color: ""
+        }
+        this.increment = this.increment.bind(this)
+    }
+
+    increment() {
+        this.setState(prevState => {
+            return {
+                count: prevState.count + 1
+            }
+        })
+    }
+
+    componentDidMount() {
+        console.log("Mounted")
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if(prevState.count !== this.state.count) {
+            const newColor = randomcolor()        
+            this.setState({color: newColor})  
+        }     
+    }
+
+    render (){
+        return (
+            <div >
+               <h1 style={{color: this.state.color}}>{this.state.count}</h1>
+               <button onClick={this.increment}>
+                   Increment
+               </button>
+            </div>
+        )
+    }
+}
+
+export default App
+//-----------------------------------------------------------
+    //NOTE Implementing conditional rendering part 1
+import React from "react";
+import TodoItem from "./src/components/TodoItem"
+import todosData from "./src/data/todosData"
+import "./src/styles/style.scss"
+import randomcolor from "randomcolor"
+import Conditional from "./src/components/Conditional"
+
+class App extends React.Component {
+
+    constructor() {
+        super()
+        this.state = {
+            isLoading: true
+        }
+    }
+
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({
+                isLoading: false
+            })
+        }, 1500)
+    }
+
+    render (){
+        return (
+            <div >
+                {this.state.isLoading ?
+                <h1>Loading...</h1> :
+                <Conditional />}
+            </div>
+        )
+    }
+}
+
+export default App
+//-----------------------------------------------------------
+//NOTE Implementing conditional rendering part 2 using &&
+import React from "react";
+import TodoItem from "./src/components/TodoItem"
+import todosData from "./src/data/todosData"
+import "./src/styles/style.scss"
+import randomcolor from "randomcolor"
+import Conditional from "./src/components/Conditional"
+
+class App extends React.Component {
+
+    constructor() {
+        super()
+        this.state = {
+            unreadMessages: [
+                "Call your mother fucka",
+                "New spam email available. All links are definitely safe to click"
+            ]
+        }
+    }
+
+    //&&
+    //true && false
+
+    render (){
+        return (
+            <div >
+                {
+                    this.state.unreadMessages.length > 0 &&
+                    <h2>You have {this.state.unreadMessages.length} unread messages</h2>
+                }                
+            </div>
+        )
+    }
+}
+
+export default App
+//-----------------------------------------------------------
+//NOTE Implementing conditional rendering practice
+import React from "react";
+import TodoItem from "./src/components/TodoItem"
+import todosData from "./src/data/todosData"
+import "./src/styles/style.scss"
+import randomcolor from "randomcolor"
+import Conditional from "./src/components/Conditional"
+
+class App extends React.Component {
+
+    constructor() {
+        super()
+        this.state = {
+            isLoggedIn: false
+        }
+        this.handleClick = this.handleClick.bind(this)
+    }
+
+    handleClick() {
+        console.log("It was clecked")
+        this.setState(prevState => {
+            return {
+                isLoggedIn: !prevState.isLoggedIn
+            }
+        })
+    }
+
+    render (){
+        let buttonText = this.state.isLoggedIn ? "Log Out" : "Log In"
+        let displayText = this.state.isLoggedIn ? "Logged In" : "Logged Out"
+
+        return (
+            <div>
+                <h1>{displayText}</h1>
+                <button onClick={this.handleClick}>{buttonText}</button>
+            </div>
+        )
+    }
+}
+
+export default App
+//-----------------------------------------------------------
+//NOTE Fetching data from an API
+import React from "react";
+import TodoItem from "./src/components/TodoItem"
+import todosData from "./src/data/todosData"
+import "./src/styles/style.scss"
+import randomcolor from "randomcolor"
+import Conditional from "./src/components/Conditional"
+
+class App extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            loading: false,
+            character:  {}
+        }
+ 
+    }
+    
+    componentDidMount() {
+        this.setState({loading: true})
+        fetch("https://swapi.dev/api/people/1")
+            .then(response => response.json())
+            .then(data => {
+                this.setState({
+                    loading: false,
+                    character: data
+                })
+            })
+    }
+    
+    // componentDidMount() {
+    //     this.setState({loading: true})
+    //     fetch("https://swapi.dev/api/people/1")
+    //         .then(response => response.json())
+    //         .then(data => console.log(data))            
+    // }
+
+    render() {
+        const text = this.state.loading ? "Loading..." : this.state.character.name
+        return (
+            <div >
+                <p>{text}</p>                
+            </div>
+        )    
+    }
+}
+
+export default App
+
+
+
+//-----------------------------------------------------------
+//NOTE Implementing Form input in react
+import React from "react";
+import TodoItem from "./src/components/TodoItem"
+import todosData from "./src/data/todosData"
+import "./src/styles/style.scss"
+import randomcolor from "randomcolor"
+import Conditional from "./src/components/Conditional"
+
+class App extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            firstName: "",
+            lastName: "",
+            isFriendly: false,
+            gender: "",
+            favColor: "blue"
+        }
+        this.handleChange = this.handleChange.bind(this)
+ 
+    }
+    
+    handleChange(event) {
+        const {name, value, type, checked} = event.target
+        type === "checkbox" ? this.setState({[name]: checked}) : this.setState({[name]: value})
+    }
+
+
+
+    render() {
+
+        return (
+            <form>
+
+                {/* //TEXT INPUT */}
+                <input type="text" 
+                    value={this.setState.firstName}
+                    name="firstName" 
+                    placeholder="First Name" 
+                    onChange={this.handleChange}/>
+                <br />              
+                
+                <input type="text" 
+                    value={this.state.lastName}
+                    name="lastName" 
+                    placeholder="Last Name" 
+                    onChange={this.handleChange}/>
+                <hr />
+                <h1>{this.state.firstName} {this.state.lastName}</h1>
+                <hr />
+
+                {/* //TEXTAREA INPUT */}
+                <textarea value="Some value here"
+                    onChange={this.handleChange} />
+                <br />
+
+                {/* //CHECKBOX */}
+                <label>
+                    <input type="checkbox"
+                        checked={this.state.isFriendly} 
+                        name="isFriendly" 
+                        onChange={this.handleChange} /> 
+                    Is Friendly?
+                </label>
+                <br />
+
+                <hr />
+                {/* //RADIO BUTTONS */}
+                <label>
+                    <input type="radio"                        
+                        name="gender" 
+                        value="male"
+                        checked={this.state.gender === "male"} 
+                        onChange={this.handleChange} /> 
+                    Male
+                </label>
+                <br />
+
+                <label>
+                    <input type="radio"                        
+                        name="gender" 
+                        value="female"
+                        checked={this.state.gender === "female"} 
+                        onChange={this.handleChange} /> 
+                    Female
+                </label>
+
+                <h2>{this.state.gender}</h2>
+                <hr />
+
+                {/* // Formik - form library for react */}
+
+                {/* //SELECT OPTIONS */}
+                <select value={this.state.favColor}
+                        name="favColor"
+                        onChange={this.handleChange}>
+                    <option value="blue">Blue</option>
+                    <option value="green">Green</option>
+                    <option value="red">Red</option>
+                    <option value="orange">Orange</option>
+                    <option value="yellow">Yellow</option>
+                </select>
+                <br />
+                <h2>{this.state.favColor}</h2>
+            </form>
+        )    
+    }
+}
+
+export default App
+
+//-----------------------------------------------------------
+//NOTE Implementing Form input as Practice
+import React from "react";
+import TodoItem from "./src/components/TodoItem"
+import todosData from "./src/data/todosData"
+import "./src/styles/style.scss"
+import randomcolor from "randomcolor"
+import Conditional from "./src/components/Conditional"
+
+class App extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            firstName: "",
+            lastName: "",
+            age: "",
+            gender: "",
+            destination: "",
+            isVegan: false,
+            isKosher: false,
+            isLactoseFree: false
+
+        }
+        this.handleChange = this.handleChange.bind(this) 
+    }
+    
+    handleChange() {
+        const {name, value, type, checked} = event.target
+
+        type === "checkbox" ?
+            this.setState({
+                [name]: checked               
+            })
+        :      
+            this.setState({
+                [name]: value
+            })
+    }
+
+
+
+    render() {
+
+        return (
+            <main>
+                <form>
+                    <input placeholder="First Name" 
+                            name="firstName"
+                            value={this.state.firstName}
+                            onChange={this.handleChange} />
+                    <br />
+                    <input placeholder="Last Name" 
+                            name="lastName"
+                            value={this.state.lastName}
+                            onChange={this.handleChange} />
+                    <br />
+                    <input placeholder="Age" 
+                            name="age"
+                            value={this.state.age}
+                            onChange={this.handleChange} />
+                    <br />
+                    <br />
+                    
+                    {/* Create radio buttons for gender here */}
+                    <label>
+                        <input type="radio"                        
+                            name="gender" 
+                            value="male"
+                            checked={this.state.gender === "male"} 
+                            onChange={this.handleChange} /> 
+                            Male
+                    </label>
+                    <br />
+                    <label>
+                        <input type="radio"                        
+                            name="gender" 
+                            value="female"
+                            checked={this.state.gender === "female"} 
+                            onChange={this.handleChange} /> 
+                        Female
+                    </label>
+                    <br />
+                    <br />
+
+                    
+                    {/* Create select box for location here */}
+                    <select value={this.state.destination}
+                            name="destination"
+                            onChange={this.handleChange}>
+                        <option value="">-- Please choose a destination --</option>
+                        <option value="germany">Germany</option>
+                        <option value="norway">Norway</option>
+                        <option value="north pole">North Pole</option>
+                        <option value="south pole">South Pole</option>
+                    </select>
+                    <br />
+                    <br />
+                    
+                    {/* Create check boxes for dietary restrictions here */}
+                    <label>
+                        <input type="checkbox"
+                                name="isVegan"
+                                onChange={this.handleChange}
+                                checked={this.state.isVegan}/>
+                        Vegan?
+                    </label>
+                    <br />
+                    <label>
+                        <input type="checkbox"
+                                name="isKosher"
+                                onChange={this.handleChange}
+                                checked={this.state.isKosher}/>
+                        Kosher?
+                    </label>
+                    <br />
+                    <label>
+                        <input type="checkbox"
+                                name="isLactoseFree"
+                                onChange={this.handleChange}
+                                checked={this.state.isLactoseFree}/>
+                        Lactose Free?
+                    </label>
+                    <br />
+                    <br />
+                    
+                    <button>Submit</button>
+                    <br />
+                    <br />
+                </form>
+                <hr />
+                <h2>Entered information:</h2>
+                <p>Your name: {this.state.firstName} {this.state.lastName}</p>
+                <p>Your age: {this.state.age}</p>
+                <p>Your gender: {this.state.gender}</p>
+                <p>Your destination: {this.state.destination}</p>
+                <p>
+                    Your dietary restrictions: <br />
+                    Vegan: {this.state.isVegan ? "Yes" : "No"} <br />
+                    Koser: {this.state.isKosher ? "Yes" : "No"} <br />
+                    Lactose Free: {this.state.isLactoseFree ? "Yes" : "No"}
+                </p>
+            </main>
+        )    
+    }
+}
+
+export default App
+//-----------------------------------------------------------
+//NOTE Separating Form Components with architecture
+import React from "react";
+import TodoItem from "./src/components/TodoItem"
+import todosData from "./src/data/todosData"
+import "./src/styles/style.scss"
+import randomcolor from "randomcolor"
+import Conditional from "./src/components/Conditional"
+import Form from "./src/components/FormContainer"
+import FormComponent from "./src/components/FormComponent"
+
+function App() {
+    return (
+        <Form />
+    )
+}
+
+export default App
+//-----------------------------------------------------------
+//NOTE Using Hooks with useState
+import React, {useState} from "react";
+import TodoItem from "./src/components/TodoItem"
+import todosData from "./src/data/todosData"
+import "./src/styles/style.scss"
+import randomcolor from "randomcolor"
+import Conditional from "./src/components/Conditional"
+import Form from "./src/components/FormContainer"
+import FormComponent from "./src/components/FormComponent"
+import Header from "./src/components/Header"
+import MemeGenerator from "./src/components/MemeGenerator"
+
+function App() {
+
+    const [answer] = useState("No")
+    console.log(answer)
+
+    return (
+        <div>
+            <h1>Is State important to know? {answer}</h1>
+        </div>
+        
+    )
+}
+
+export default App
+//-----------------------------------------------------------
+
+
+
+
+//===========================================================
+//ANCHOR REFERENCE MATERIALS
+//===========================================================
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findindex
+
+// https://reactjs.org/docs/events.html#supported-events
+
+// https://engineering.musefind.com/react-lifecycle-methods-how-and-when-to-use-them-2111a1b692b1
+// https://reactjs.org/blog/2018/03/29/react-v-16-3.html#component-lifecycle-changes
+
+// https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html
+// https://reactjs.org/docs/react-component.html#getsnapshotbeforeupdate
+// https://scrimba.com/g/greacthooks
+
+
+// https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch
+// https://swapi.co/
+//https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261
+
+// https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0
+
+/**
+ * Other modern/advanced React features/topics to learn:
+ * 
+ * Official React Context API - https://reactjs.org/docs/context.html
+ * Error Boundaries - https://reactjs.org/docs/error-boundaries.html
+ * render props - https://reactjs.org/docs/render-props.html
+ * Higher Order Components - https://reactjs.org/docs/higher-order-components.html
+ * React Router - https://reacttraining.com/react-router/core/guides/philosophy
+ * React Hooks - https://reactjs.org/docs/hooks-intro.html
+ * React lazy, memo, and Suspense - https://reactjs.org/blog/2018/10/23/react-v-16-6.html
+ */

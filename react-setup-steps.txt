@@ -1,0 +1,67 @@
+//SECTION Setting up React using WebPack, Babel, SASS, and NodeJS
+
+//ANCHOR 1 create folders
+mkdir src public
+
+//ANCHOR 2 create files
+touch src/index.js public/index.html
+
+//ANCHOR 3 create package.json file
+npm init -y
+
+//ANCHOR 4 Go to webpack site https://webpack.js.org/guides/getting-started/
+//Install webpack 
+npm i webpack webpack-cli -D
+
+//ANCHOR 5 Install react-dom
+npm i react react-dom
+
+//ANCHOR 6 Go to webpack site 
+//https://webpack.js.org/guides/getting-started/#using-a-configuration
+//Create webpack.config.js file
+//Create setup code in webpack.config.js
+
+//ANCHOR 7 Create html code in index.js file
+//Create root div
+//create src to bundle.js
+
+//ANCHOR 8 Create code in index.js file
+//sample react code
+
+//ANCHOR 9 Edit webpack.config.js file to include mode
+
+//ANCHOR 10 Edit package.json file to change scripts details to "start"
+
+//ANCHOR 11 Edit the package.json file to add a build comand for production
+//ANCHOR 12 Remove the mode:development in webpack.config.js 
+
+//ANCHOR 13 Install Babel
+npm i @babel/core @babel/preset-env @babel/preset-react babel-loade
+r -D
+
+//ANCHOR 14 Create a file .babelrc in the root folder add presets in the code
+
+//ANCHOR 15 Add module in the web.config.js file
+
+//ANCHOR 16 Add devtool in the web.config.js file
+
+//ANCHOR 17 Install the webpack dev server
+npm i webpack-dev-server -D
+
+//ANCHOR 18 Add devServer settings in the web.config.js file
+
+//ANCHOR 19 Add dev script in package.json file to run dev server
+
+//ANCHOR 0 Install CSS loader
+npm i css-loader style-loader -D
+
+//ANCHOR 21 Update web.config.js file to include rules for CSS loader
+
+//ANCHOR 22 Update index.js files to import the styles file
+
+//ANCHOR 23 Install SASS loader
+npm i sass-loader node-sass -D
+
+//ANCHOR 24 Update index.js to import style.scss
+
+//ANCHOR 25 update web.config.js file to use sass loader
